@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="tictactoe.css">
+</head>
+
+<body>
+
+    <div class="game-board">
+        <div class="box" id=1 onclick="ch(1)"></div>
+        <div class="box" id=2 onclick="ch(2)"></div>
+        <div class="box" id=3 onclick="ch(3)"></div>
+        <div class="box" id=4 onclick="ch(4)"></div>
+        <div class="box" id=5 onclick="ch(5)"></div>
+        <div class="box" id=6 onclick="ch(6)"></div>
+        <div class="box" id=7 onclick="ch(7)"></div>
+        <div class="box" id=8 onclick="ch(8)"></div>
+        <div class="box" id=9 onclick="ch(9)"></div>
+    </div>
+    <p id="demo"></p>
+    <h1 id="ans"></h1>
+    <script>
+        const con = [];
+        const r = [];
+        const g = [];
+        var c = 0;
+
+        var ans = document.getElementById("ans");
+        function ch(par) {
+            var i = document.getElementById(par);
+            if (!con.includes(par)) {
+                if (c % 2 == 0) {
+                    // i.style.backgroundColor="green";
+                    i.classList.add("green");
+                    g.push(par)
+                    ans.innerHTML = par;
+                }
+                else if (c % 2 != 0) {
+                    i.classList.add("red");
+                    r.push(par)
+                }
+
+                con.push(par);
+
+                document.getElementById("demo").innerHTML = c;
+                //  document.getElementById("demo").innerHTML=!con.includes(9);
+                c = c + 1;
+            }
+
+
+            if (g.includes(1) && g.includes(2) && g.includes(3) || g.includes(4) && g.includes(5) && g.includes(6) || g.includes(7) && g.includes(8) && g.includes(9)
+                || g.includes(1) && g.includes(4) && g.includes(7) || g.includes(2) && g.includes(5) && g.includes(8) || g.includes(3) && g.includes(6) && g.includes(9)
+                || g.includes(1) && g.includes(5) && g.includes(9) || g.includes(3) && g.includes(5) && g.includes(7)) {
+                ans.innerHTML = "Green won";
+            }
+
+            else if (r.includes(1) && r.includes(2) && r.includes(3) || r.includes(4) && r.includes(5) && r.includes(6) || r.includes(7) && r.includes(8) && r.includes(9)
+                || r.includes(1) && r.includes(4) && r.includes(7) || r.includes(2) && r.includes(5) && r.includes(8) || r.includes(3) && r.includes(6) && r.includes(9)
+                || r.includes(1) && r.includes(5) && r.includes(9) || r.includes(3) && r.includes(5) && r.includes(7)) {
+                ans.innerHTML = "red won";
+            }
+
+
+
+        }
+    </script>
+</body>
+
+</html>
